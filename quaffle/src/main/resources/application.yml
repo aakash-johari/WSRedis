@@ -1,0 +1,7 @@
+server:
+  port: 7887
+redis:
+  host: 172.20.20.10
+  port: 6379
+redisConfig:
+  channel: "message"
