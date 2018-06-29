@@ -1,0 +1,5 @@
+#!/bin/bash
+
+SERVICE="/etc/service/quaffle-ws-service"
+
+sudo svc -d $SERVICE

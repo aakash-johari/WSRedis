@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+PACKAGE="quaffle-ws-service"
+
+CP="/usr/share/$PACKAGE/$PACKAGE.jar"
+
+java -jar $CP 2>&1

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PAC="quaffle-ws-service"
+SERVICE="/etc/service/$PAC"
+
+CMD="$1"
+
+if [ "$CMD" == "upgrade" ]; then
+	# stop the service
+	svc -d $SERVICE
+fi
+
+if [ "$CMD" == "purge" -o "$CMD" == "remove" ]; then
+	# kill the service
+	svc -k $SERVICE
+fi

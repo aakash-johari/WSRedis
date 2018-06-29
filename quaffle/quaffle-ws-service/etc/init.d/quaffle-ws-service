@@ -1,0 +1,33 @@
+#! /bin/bash
+
+PACKAGE="quaffle-ws-service"
+SERVICE=/etc/service/$PACKAGE
+
+case $1 in
+  start)
+    echo "Starting service ..."
+    svc -u $SERVICE
+    ;;
+  stop)
+    echo "Stopping service ..."
+    svc -d $SERVICE
+    ;;
+  restart)
+    echo "Stopping service ..."
+    svc -d $SERVICE
+    sleep 5
+
+    echo "Starting service ..."
+    svc -u $SERVICE
+    sleep 60
+    ;;
+  status)
+    svstat $SERVICE
+    ;;
+  shell)
+    exec setuidgid $PACKAGE bash
+    ;;
+  *)
+    echo "Usage $0 {start|stop|restart|status}"
+    ;;
+esac

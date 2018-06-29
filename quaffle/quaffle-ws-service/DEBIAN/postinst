@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+PAC="quaffle-ws"
+
+invoke-rc.d $PAC start
