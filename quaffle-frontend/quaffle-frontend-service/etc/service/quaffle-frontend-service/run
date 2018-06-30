@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+PACKAGE="quaffle-frontend-service"
+
+CP="/usr/share/$PACKAGE/$PACKAGE.js"
+
+exec node $CP 2>&1

@@ -1,0 +1,9 @@
+- hosts: launched
+  become: yes
+  become_method: sudo
+  vars:
+    ansible_ssh_private_key_file: "/Users/aakash.johari/.ssh/id_rsa"
+
+  roles:
+    - { role: java8, tags: ['java8'] }
+    - { role: quaffle-ws, tags: ['quaffle-ws'] }

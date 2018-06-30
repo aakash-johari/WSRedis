@@ -1,0 +1,5 @@
+#!/bin/bash
+
+SERVICE="/etc/service/quaffle-frontend-service"
+
+sudo svc -d $SERVICE

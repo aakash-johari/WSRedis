@@ -1,0 +1,5 @@
+Package: quaffle-frontend-service
+Version: __VERSION__
+Architecture: all
+Maintainer: Aakash Johari <aakash.johari@live.com>
+Description: Quaffle Frontend

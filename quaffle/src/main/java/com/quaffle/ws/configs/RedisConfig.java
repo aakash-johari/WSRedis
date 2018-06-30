@@ -28,4 +28,14 @@ public class RedisConfig {
     RedisClient redisClient(ClientResources clientResources) {
         return RedisClient.create(clientResources, RedisURI.create(host, port));
     }
+
+    @Bean(destroyMethod = "close")
+    StatefulRedisPubSubConnection<String, String> pubSubConnection(RedisClient redisClient) {
+        return redisClient.connectPubSub();
+    }
+
+    @Bean(destroyMethod = "close")
+    StatefulRedisConnection<String, String> connection(RedisClient redisClient) {
+        return redisClient.connect();
+    }
 }

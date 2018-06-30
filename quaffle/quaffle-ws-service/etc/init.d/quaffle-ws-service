@@ -1,5 +1,16 @@
 #! /bin/bash
 
+### BEGIN INIT INFO
+# Provides:          quaffle-ws-service
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Example initscript
+# Description:       This file should be used to construct scripts to be
+#                    placed in /etc/init.d.
+### END INIT INFO
+
 PACKAGE="quaffle-ws-service"
 SERVICE=/etc/service/$PACKAGE
 
@@ -7,6 +18,7 @@ case $1 in
   start)
     echo "Starting service ..."
     svc -u $SERVICE
+    sleep 60
     ;;
   stop)
     echo "Stopping service ..."

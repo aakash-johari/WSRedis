@@ -1,0 +1,13 @@
+- hosts: launched
+  become: yes
+  become_method: sudo
+  
+  tasks:
+    - name: Copy Debian
+      copy: src=templates/quaffle-frontend-service_1.1.deb dest=/tmp/quaffle-frontend-service_1.1.deb
+
+    - name: Install Service Package
+      apt: deb=/tmp/quaffle-frontend-service_1.1.deb
+
+    - name: Restart Service
+      service: name=quaffle-frontend-service state=restarted

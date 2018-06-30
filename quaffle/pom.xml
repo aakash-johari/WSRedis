@@ -17,6 +17,7 @@
         <quaffle.jackson.version>2.7.3</quaffle.jackson.version>
         <quaffle.lettuce.version>5.0.4.RELEASE</quaffle.lettuce.version>
         <quaffle.projectreactor.version>3.1.8.RELEASE</quaffle.projectreactor.version>
+        <quaffle.logback.version>1.2.3</quaffle.logback.version>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -81,6 +82,20 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${quaffle.jackson.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${quaffle.logback.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-access -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-access</artifactId>
+            <version>${quaffle.logback.version}</version>
         </dependency>
     </dependencies>
 

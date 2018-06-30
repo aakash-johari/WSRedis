@@ -1,0 +1,9 @@
+  - name: Copy debian package to host
+    copy: src=templates/quaffle-ws-service_1.1.deb dest=/tmp/quaffle-ws-service_1.1.deb
+
+  - name: Install package
+    apt:
+      deb: /tmp/quaffle-ws-service_1.1.deb
+
+  - name: Restart service
+    service: name=quaffle-ws-service state=restarted

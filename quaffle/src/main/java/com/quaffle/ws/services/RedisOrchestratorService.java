@@ -35,14 +35,17 @@ public class RedisOrchestratorService {
 
     @Autowired
     public RedisOrchestratorService(RedisClient redisClient,
-                                    @Value("${redisConfig.channel}") String channelName) {
+                                    StatefulRedisConnection<String, String> connection,
+                                    StatefulRedisPubSubConnection<String, String> pubSubConnection,
+                                    @Value("${redisConfig.channel}") String channelName,
+                                    WSPubSubListener wsPubSubListener) {
         this.redisClient = redisClient;
         this.channelName = channelName;
 
-        connection = redisClient.connect();
-        pubSubConnection = redisClient.connectPubSub();
+        this.connection = connection;
+        this.pubSubConnection = pubSubConnection;
 
-        pubSubConnection.addListener(new WSPubSubListener());
+        pubSubConnection.addListener(wsPubSubListener);
         pubSubCommands = pubSubConnection.sync();
         pubSubCommands.subscribe(channelName);
         commands = connection.sync();
@@ -53,7 +56,7 @@ public class RedisOrchestratorService {
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-        String serializedMessage = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(rMessage);
+        String serializedMessage = mapper.writeValueAsString(rMessage);
 
         commands.publish(channelName, serializedMessage);
     }
