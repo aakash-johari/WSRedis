@@ -7,7 +7,7 @@ import Stomp from "@stomp/stompjs"
 
 class Actions {
     constructor() {
-        this.socket = new SockJS('http://172.20.20.12:7887/chat');
+        this.socket = new SockJS('http://172.20.20.13:7887/chat');
         this.stompClient = Stomp.over(this.socket);  
     }
 

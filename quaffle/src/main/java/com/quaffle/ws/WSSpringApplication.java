@@ -28,7 +28,7 @@ public class WSSpringApplication {
         TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
         LogbackValve logbackValve = new LogbackValve();
 
-        logbackValve.setFilename("logback.xml");
+        logbackValve.setFilename("logback-test.xml");
         tomcat.addContextValves(logbackValve);
 
         return tomcat;
